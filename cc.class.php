@@ -21,7 +21,6 @@ class creditCardGenerator
     }
     public function __construct($bin, $much, $check){
         $this->bin = $bin;
-        $this->check = $check;
         if (is_numeric($check)) {
             $this->check = $check;
         }else{

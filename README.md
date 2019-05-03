@@ -4,3 +4,5 @@ EXTRAP AND CHECK!
 ![alt text](https://raw.githubusercontent.com/zelsaddr/CC3XTR4PER/master/Capture.PNG)
 <br>
 php run.php
+<br>
+BOOLEAN = 1 or 0

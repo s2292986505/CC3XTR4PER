@@ -22,7 +22,7 @@ class creditCardGenerator
     public function __construct($bin, $much, $check){
         $this->bin = $bin;
         $this->check = $check;
-        if (is_bool($check)) {
+        if (is_numeric($check)) {
             $this->check = $check;
         }else{
             echo $this->color("red", "{!} Check must boolean\n");

@@ -9,7 +9,7 @@
  *             - Adding feature Year,
  *             - Adding feature CVV,
  *             - Adding feature Checker for Live card dll
- * NOTE : FILE NAME SAVED WITH YOUR BIN INPUT.
+ * NOTE : FILE NAME SAVED AS YOUR BIN INPUT.
  * MAZTERIN.COM
 **/
 require "./cc.class.php";

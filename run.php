@@ -5,7 +5,7 @@
  * Thanks to https://github.com/radenvodka/color-php for PHP Color Function
  * Thanks to https://github.com/jacek-9999/credit-card-generator/ 
  * Iam Recode the cc.class.php from jacek-9999 in github'
- * Changelog : - Adding feature Date,
+ * Changelog : - Adding feature Month,
  *             - Adding feature Year,
  *             - Adding feature CVV,
  *             - Adding feature Checker for Live card dll

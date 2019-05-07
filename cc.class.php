@@ -1,2 +1,168 @@
 <?php
- class creditCardGenerator { protected $bin; protected $message; protected $much; protected $check; public function color($color = "\144\x65\146\141\165\154\164", $text) { $arrayColor = array("\x67\x72\145\x79" => "\x31\73\x33\60", "\162\x65\x64" => "\61\73\x33\61", "\147\x72\x65\x65\156" => "\x31\73\x33\x32", "\x79\145\x6c\154\157\x77" => "\61\73\63\63", "\x62\x6c\x75\x65" => "\x31\x3b\63\64", "\160\x75\162\x70\x6c\145" => "\61\73\x33\65", "\x6e\145\x76\171" => "\61\x3b\63\x36", "\x77\x68\x69\164\145" => "\61\x3b\60"); return "\33\133" . $arrayColor[$color] . "\155" . $text . "\x1b\133\x30\x6d"; } public function __construct($bin, $much, $check) { $this->bin = $bin; $this->check = $check; if (is_numeric($check)) { $this->check = $check; } else { echo $this->color("\x72\x65\144", "\173\x21\x7d\x20\103\150\145\143\x6b\x20\x6d\165\163\x74\40\142\157\x6f\154\145\141\156\12"); } if (is_numeric($much)) { $this->much = $much; } else { echo $this->color("\162\145\144", "\173\41\175\40\x54\x6f\x74\x61\x6c\40\x6d\x75\x73\x74\40\x62\145\x20\156\x75\x6d\145\162\x69\x63\x21\12"); die(1); } } protected function Save($title, $text) { $fopen = fopen($title, "\141"); fwrite($fopen, $text); fclose($fopen); } protected function Check($card) { $ch = curl_init(); $postData = http_build_query(array("\x61\x6a\141\x78" => 1, "\144\157" => "\143\150\x65\143\153", "\143\143\x6c\151\163\164" => $card)); $headers = array(); $headers[] = "\x43\157\x6f\153\151\145\72\x20\137\147\141\x3d\107\101\61\x2e\x32\x2e\x32\60\x33\x31\x39\60\63\x32\66\64\56\61\65\65\65\63\x35\x33\63\61\x34\x3b\40\146\x63\75\x25\67\102\x25\x32\62\x4e\104\111\60\146\x6d\x46\163\x59\155\x56\154\x59\x6d\x46\151\145\123\65\x6a\x62\62\x30\45\x32\x32\x25\x33\x41\x25\62\x32\x31\x25\x33\101\61\x35\x35\x35\63\65\63\63\62\x30\x36\x35\70\x25\x32\x32\x25\x32\103\45\62\62\x4e\104\111\60\146\x6d\106\x31\x64\107\71\x6e\x63\155\x46\x77\x61\x47\112\x31\x65\x53\x35\x6a\x62\62\x30\x25\x32\x32\x25\63\x41\x25\62\62\x31\x25\63\x41\61\65\x35\65\x33\65\63\x33\x32\60\66\71\x34\x25\x32\x32\x25\62\103\45\62\62\x4e\x44\111\60\146\x6d\160\152\x63\107\126\x75\142\x6d\x56\x35\x4c\155\116\166\142\x51\45\62\62\45\63\x41\x25\x32\x32\x32\45\63\101\61\x35\x35\65\x33\x35\63\x33\x34\x31\71\63\x31\x25\62\x32\45\67\x44\x3b\x20\160\x76\75\45\x37\x42\45\62\x32\141\x25\62\x32\x25\x33\101\x25\x32\62\x31\x25\x33\x41\x31\x35\65\x35\x33\65\x33\x33\62\60\x36\x36\x36\45\x32\x32\45\x32\103\x25\x32\62\157\45\62\x32\x25\63\x41\45\62\62\61\x25\63\x41\61\x35\65\x35\63\x35\63\x33\x32\60\x37\x30\60\x25\x32\x32\45\62\103\45\62\62\144\45\x32\x32\x25\63\101\x25\62\x32\62\x25\63\101\61\65\65\x35\63\65\63\63\x34\x31\x39\x33\65\x25\x32\62\x25\x37\x44\x3b\x20\120\110\x50\123\105\x53\x53\x49\104\75\x70\147\155\x37\163\154\x33\x75\162\x34\x63\155\x70\64\70\x61\x73\x6b\141\x35\x6e\x39\x31\154\x6f\63"; $headers[] = "\x4f\x72\151\x67\x69\156\x3a\40\x68\x74\164\x70\x73\x3a\57\x2f\155\x72\x63\150\x65\143\x6b\145\x72\56\x6e\145\x74"; $headers[] = "\101\x63\x63\x65\160\x74\55\114\141\x6e\147\165\141\147\145\x3a\x20\145\156\55\125\x53\x2c\x65\156\x3b\x71\75\60\56\x39"; $headers[] = "\x55\x73\x65\x72\55\x41\147\145\x6e\x74\x3a\40\115\157\x7a\x69\154\154\x61\x2f\x35\x2e\60\40\50\127\151\156\x64\x6f\167\163\40\116\x54\x20\x36\x2e\61\73\40\x57\x69\156\x36\x34\73\x20\170\x36\64\x29\40\x41\160\x70\x6c\145\x57\145\142\113\x69\x74\x2f\65\x33\67\x2e\63\66\40\x28\113\x48\x54\x4d\x4c\x2c\40\x6c\x69\153\x65\40\x47\x65\x63\x6b\157\51\x20\x43\x68\x72\157\x6d\x65\57\67\x33\56\x30\x2e\x33\66\70\63\x2e\61\60\63\x20\123\x61\146\x61\x72\151\57\x35\63\x37\56\x33\x36"; $headers[] = "\x43\157\156\x74\145\x6e\164\55\124\x79\160\x65\x3a\x20\141\x70\160\154\151\x63\141\x74\151\x6f\156\x2f\x78\55\x77\167\167\55\x66\157\x72\x6d\x2d\165\x72\154\x65\156\x63\157\144\145\x64\73\x20\143\x68\141\162\163\145\164\75\125\124\106\x2d\70"; $headers[] = "\101\143\x63\145\160\x74\x3a\40\x61\x70\x70\154\x69\x63\141\x74\x69\x6f\x6e\57\152\163\157\156\54\40\164\145\x78\x74\x2f\x6a\x61\166\141\163\143\162\151\160\x74\54\40\52\57\x2a\73\x20\x71\x3d\x30\x2e\x30\61"; $headers[] = "\x52\x65\146\145\x72\145\x72\72\x20\150\164\x74\160\163\72\57\x2f\155\x72\x63\150\145\143\x6b\x65\162\56\156\x65\164\x2f\x63\141\x72\144\x2f\143\x63\x6e\63\x2f"; $headers[] = "\130\55\122\x65\161\165\x65\x73\x74\145\144\55\127\151\x74\x68\72\x20\130\115\114\x48\164\x74\160\x52\x65\161\x75\145\163\164"; $headers[] = "\103\x6f\156\156\145\x63\164\x69\x6f\156\x3a\40\153\145\x65\160\55\x61\154\x69\x76\x65"; $options = array(CURLOPT_URL => "\150\164\x74\160\x73\x3a\x2f\57\155\x72\143\x68\x65\x63\x6b\x65\x72\56\x6e\145\x74\x2f\143\141\x72\x64\57\143\143\x6e\x33\57\141\154\151\x65\156\60\x37\56\x70\150\x70", CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true, CURLOPT_POSTFIELDS => $postData, CURLOPT_HTTPHEADER => $headers, CURLOPT_FOLLOWLOCATION => true); curl_setopt_array($ch, $options); $exec = curl_exec($ch); return $exec; } public function getCC() { if ($this->bin <= 0 || !isset($this->bin)) { $message[0] = "\123\x65\164\40\x62\x69\x6e\40\146\151\x72\163\164"; echo $this->color("\x79\145\154\154\x6f\x77", $message); } else { if ($this->bin > 9999999999999999) { $message[0] = "\x42\x69\x6e\x20\x74\157\x20\x6c\157\x6e\147"; echo $this->color("\171\145\x6c\x6c\157\167", $message); } else { $output = $this->ccNumber($this->bin, 16, $this->much); return $output; } } } protected function generateYears() { $randDate = rand(1, 12); $randYears = rand(20, 25); $randCvv = rand(8, 800); $randDate < 10 ? $randDate = "\60" . $randDate : ($randDate = $randDate); $randCvv < 100 ? $randCvv = "\x30" . $randCvv : ($randCvv = $randCvv); return "\x7c" . $randDate . "\x7c\62\x30" . $randYears . "\174" . $randCvv; } protected function completedNumber($prefix, $length) { $ccnumber = $this->bin; while (strlen($ccnumber) < $length - 1) { $ccnumber .= rand(0, 9); } $sum = 0; $pos = 0; $reversedCCnumber = strrev($ccnumber); while ($pos < $length - 1) { $odd = $reversedCCnumber[$pos] * 2; if ($odd > 9) { $odd -= 9; } $sum += $odd; if ($pos != $length - 2) { $sum += $reversedCCnumber[$pos + 1]; } $pos += 2; } $checkdigit = ((floor($sum / 10) + 1) * 10 - $sum) % 10; $ccnumber .= $checkdigit; return $ccnumber; } protected function ccNumber($prefixList, $length, $howMany) { for ($i = 0; $i < $howMany; $i++) { if ($this->check == true) { $card = $this->completedNumber($this->bin, $length) . $this->generateYears(); $check = json_decode($this->Check($card)); if ($check->error == 0) { preg_match_all("\x23\74\146\157\x6e\164\x20\143\157\x6c\157\x72\75\x67\x72\x65\x65\x6e\76\x28\x2e\x2a\77\51\74\57\x66\157\x6e\x74\x3e\x23\163\x69", $check->msg, $charge); echo $card . $this->color("\147\x72\145\x65\x6e", "\x20\76\76\40\114\x49\126\105\x20\133\x20\103\x68\x61\x72\x67\x65\x20\x3a\x20" . $charge[1][1] . "\x20\135\xa"); $this->Save("\x52\145\x73\x75\x6c\164\x2d" . $this->bin . "\56\164\x78\164", $card . "\x20\174\x20" . $charge[1][1] . "\12"); } else { if ($check->error == 2) { echo $card . $this->color("\x72\145\144", "\x20\x3e\x3e\40\x44\x49\105\xa"); } else { echo $card . $this->color("\147\x72\x65\171", "\40\x3e\x3e\x20\x55\x4e\x4b\x4e\x4f\127\116\xa"); } } } else { echo $this->completedNumber($this->bin, $length) . $this->generateYears() . "\xa"; } } } }
+class CC 
+{
+    protected $bin;
+    protected $check;
+    protected $jml;
+    
+    public function __construct($bin, $check = 0, $jml = 0) 
+    {
+        $this->bin = $bin;
+        $this->check = $check;
+        $this->jml = $jml;
+    }
+    
+    private function color($color = "default" , $text){
+    	$arrayColor = array(
+    		'grey' 		=> '1;30',
+    		'red' 		=> '1;31',
+    		'green' 	=> '1;32',
+    		'yellow' 	=> '1;33',
+    		'blue' 		=> '1;34',
+    		'purple' 	=> '1;35',
+    		'nevy' 		=> '1;36',
+    		'white' 	=> '1;0',
+    	);	
+    	return "\033[".$arrayColor[$color]."m".$text."\033[0m";
+    }
+    public function Execute() 
+    {   
+        $this->LoadBanner();
+        echo "{~} Starting generation\n";
+        sleep(2);
+        if ($this->check < 1) {
+            for($i=1; $i <= $this->jml; $i++) 
+            {
+                echo $this->Extrap($this->bin)."\n";
+                sleep(1);
+            }
+        } 
+        else 
+        {
+            for($i=1; $i <= $this->jml; $i++) {
+                $card = $this->Extrap($this->bin);
+                echo $this->Check($card)."\n";
+                sleep(1);
+            }
+        }
+    }
+    protected function LoadBanner () 
+    {
+        $banner = "|==============================|\n";
+        $banner.= "|   o-o   o-o  o-o  o--o       |\n";
+        $banner.= "|  /     /    o     |          |\n";
+        $banner.= "| O     O     |  -o O-o  o-o   |\n";
+        $banner.= "|  \     \    o   | |    |  |  |\n";
+        $banner.= "|   o-o   o-o  o-o  o--o o  o  |\n";
+        $banner.= "|------------------------------|\n";
+        $banner.= "|   V.2  !-- DWYOR --!         |\n";
+        $banner.= "|   Insert bin with 'x' maybe  |\n";
+        $banner.= "| the result isn't valid card. |\n";
+        $banner.= "|------------------------------|\n";
+        $banner.= "|-                MAZTERIN.COM |\n";
+        $banner.= "|==============================|\n\n";
+        print $banner;
+    }
+    protected function generateYears()
+    {
+        $randMonth = rand(1,12);
+        $randYears = rand(20,25);
+        $randCvv = rand(010, 800);
+        $randMonth < 10 ? $randMonth = "0".$randMonth : $randMonth = $randMonth;
+        $randCvv < 100 ? $randCvv = "0".$randCvv : $randCvv = $randCvv;
+        return "|".$randMonth."|20".$randYears."|".$randCvv;
+    }
+    protected function Calculate ($ccnumber, $length)
+    {
+        $sum = 0;
+        $pos = 0;
+        $reversedCCnumber = strrev( $ccnumber );
+    
+        while ( $pos < $length - 1 ) {
+            $odd = $reversedCCnumber[ $pos ] * 2;
+            if( $odd > 9 ) {
+                $odd -= 9;
+            }
+            $sum += $odd;
+    
+            if( $pos != ($length - 2) ) {
+    
+                $sum += $reversedCCnumber[ $pos +1 ];
+            }
+            $pos += 2;
+        }
+    
+        # Calculate check digit
+        $checkdigit = (( floor($sum/10) + 1) * 10 - $sum) % 10;
+        $ccnumber .= $checkdigit;
+        return $ccnumber;
+    }
+    protected function Extrap ($bin) 
+    {
+        if (preg_match_all("#x#si", $bin)) 
+        {
+            $ccNumber = $bin;
+            while (strlen($ccNumber) < (16 - 1)) {
+                $ccNumber .= rand(0,9);
+            }
+            $ccNumber = str_split($ccNumber);
+            $replace = "";
+            foreach ($ccNumber as $cc => $key) {
+                $replace .= str_replace("x", rand(0,9), $key);
+            }
+            $Complete = $this->Calculate($replace, 16);
+        } 
+        else    
+        {
+            $ccNumber = $bin;
+            while (strlen($ccNumber) < (16 - 1)) {
+                $ccNumber .= rand(0,9);
+            }
+            $Complete = $this->Calculate($ccNumber, 16);
+        }
+        return $Complete.$this->generateYears();
+    }
+    protected function Save($title, $text){
+        $fopen = fopen($title, "a");
+        fwrite($fopen, $text);
+        fclose($fopen);
+    }
+    protected function Check($card) {
+        $headers = array();
+        $headers[] = 'Origin: http://elry2cc.com';
+        $headers[] = 'Accept-Language: en-US,en;q=0.9';
+        $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36';
+        $headers[] = 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8';
+        $headers[] = 'Accept: */*';
+        $headers[] = 'Referer: http://elry2cc.com/ElrY2_Checker/';
+        $headers[] = 'X-Requested-With: XMLHttpRequest';
+        $headers[] = 'Connection: keep-alive';
+        $ch = curl_init();
+        $options = array(
+            CURLOPT_URL             => "http://elry2cc.com/ElrY2_Checker/api.php",
+            CURLOPT_RETURNTRANSFER  => true,
+            CURLOPT_POST            => true,
+            CURLOPT_POSTFIELDS      => "data=".urlencode($card),
+            CURLOPT_HTTPHEADER      => $headers
+            );
+        curl_setopt_array($ch, $options);
+        $exec = curl_exec($ch);
+        $status = json_decode($exec);
+        switch($status->error)
+        {
+            case '2':
+                return $card.$this->color("red", " [ DIE ]");
+                break;
+            case '3':
+                return $card.$this->color("grey", " [ UNKNOWN ]");
+                break;
+            case '4':
+                return $card.$this->color("yellow", " [ CC NOT VALID ]");
+                break;
+            case '1':
+                $this->Save("Result-".$this->bin.".list", $card."\n");
+                return $card.$this->color("green", " [ LIVE ]");
+                break;
+        }
+    }
+}

@@ -122,14 +122,12 @@ class CC
         }
         return $Complete.$this->generateYears();
     }
-    protected function Save ($title, $text)
-    {
+    protected function Save($title, $text){
         $fopen = fopen($title, "a");
         fwrite($fopen, $text);
         fclose($fopen);
     }
-    protected function Check($card) 
-    {
+    protected function Check($card) {
         $headers = array();
         $headers[] = 'Origin: http://elry2cc.com';
         $headers[] = 'Accept-Language: en-US,en;q=0.9';
